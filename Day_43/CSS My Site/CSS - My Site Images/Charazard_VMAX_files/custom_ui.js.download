@@ -1,0 +1,77 @@
+(function(){
+	const key = "all.custom_ui";
+
+	var getCustomUI = function(label) {
+		if (!localStorage) return;
+
+		var uis_list_str = localStorage.getItem(key);
+		var uis_list_json = {};
+		try {
+			uis_list_json = JSON.parse(uis_list_str);
+		} catch (e) {
+			return;
+		}
+
+		if (!uis_list_json) return;
+
+		return uis_list_json[label];
+	};
+
+	var setCustomUI = function(label, uis) {
+		if (!localStorage) return;
+
+		var uis_list_str = localStorage.getItem(key);
+		var uis_list_json = {};
+		try {
+			uis_list_json = JSON.parse(uis_list_str);
+		} catch (e) {
+			return;
+		}
+
+		if (!uis_list_json) {
+			uis_list_json = {};
+		}
+
+		uis_list_json[label] = uis;
+		localStorage.setItem(key, JSON.stringify(uis_list_json));
+	};
+
+	var saveCustomUI = function(label, selector, visibility) {
+		var target = $(selector);
+		if (!target) return;
+
+		var uis = getCustomUI(label);
+		if (!uis || (uis.length < 1)) {
+			uis = {};
+		}
+
+		uis[selector] = visibility;
+
+		setCustomUI(label, uis);
+		applyCustomUI(label);
+	};
+
+	var applyCustomUI = function(label) {
+		var uis = getCustomUI(label);
+
+		if (!uis || (uis.length < 1)) {
+			return;
+		}
+
+		$(document).ready(function() {
+			for (var selector in uis) {
+				var css = uis[selector];
+				$(selector).each(function() {
+					$(this).attr("style", css);
+				});
+			}
+		});
+	};
+
+	var initCustomUI = function(label) {
+		UI_LABEL = label;
+	};
+
+	window.saveCustomUI = saveCustomUI;
+	window.applyCustomUI = applyCustomUI;
+	})();

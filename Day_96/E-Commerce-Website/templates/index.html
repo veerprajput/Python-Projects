@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopZinga</title>
+    <link rel='icon' href='../static/images/favicon.ico'>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div style='height: 85px; background-color: #46c1ff; width: 120%; position: relative; bottom: 10px; right: 1%; margin-right: 3%;'>
+        <img src='../static/images/Shopzinga.png' style='width: 3%; height: 30px; position: relative; top: 15px; left: 15px; display: inline'></img><span style='font-size: 2rem; position: relative; top: 10px; left: 25px;'><strong><a href="/" style='color: #f5f5f5; text-decoration: none'>ShopZinga</a></strong></span>
+        <img src='../static/images/shopping-cart_1f6d2.png' style='width: 2%; height: 30px; position: absolute; top: 15px; right: 27.5%;'></img>
+        <strong style="position: absolute; top: 21%; right: 16.5%; color: #f5f5f5; font-size: 1.5rem;">{{logged_in_user}}</strong>
+        <button style="position: absolute; top: 21%; right: 21%; background-color: #46c1ff; border: 0px"><strong><a href="{{ url_for('cart') }}" style="color: #f5f5f5; font-size: 1.5rem; text-decoration: none">Cart ({{ n }})</a></strong></button>
+        {% if logout_yes == 'True' %}
+            <button style='position: absolute; top: 21%; right: 30%; background-color: #46c1ff; border: 0px'><a href="{{url_for('register')}}" style='color: #f5f5f5; font-size: 1.5rem; text-decoration: none'><strong>Register</strong></a></button>
+            <button style='position: absolute; top: 21%; right: 37%; background-color: #46c1ff; border: 0px'><a href="{{url_for('login')}}" style='color: #f5f5f5; font-size: 1.5rem; text-decoration: none'><strong>Login</strong></a></button>
+        {% else %}
+            <button style='position: absolute; top: 21%; right: 30%; background-color: #46c1ff; border: 0px'><a href="{{url_for('logout')}}" style='color: #f5f5f5; font-size: 1.5rem; text-decoration: none'><strong>Logout</strong></a></button>
+        {% endif %}
+        <span>
+    </div>
+    <div id='title-section'>
+        <h1 class='title-header'>ShopZinga</h1>
+        <p style='width: 70%; margin: auto;' class='title-describer'>At ShopZinga we are the market leader in offering the most competitive prices on electronics, plushies, and various other products.</p>
+        <button class='header-link' style='position: relative; top: 100px; right: 33%; border-radius: 15%;'><a href="{{url_for('electronics')}}" style='color: #fff; text-decoration: none'>Electronics</a></button>
+        <button class='header-link' style='position: relative; top: 100px; right: 31%; border-radius: 15%;'><a href="{{url_for('accessories')}}" style='color: #fff; text-decoration: none'>Accessories</a></button>
+    </div>
+</body>
+</html>

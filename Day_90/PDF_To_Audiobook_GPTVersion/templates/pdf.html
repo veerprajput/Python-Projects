@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PDF Audiobook Reader</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+    <script src="https://kit.fontawesome.com/e30921833d.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>PDF Audiobook Reader</h1>
+      <div id="pdf-container"></div>
+      <div id="audio-controls">
+        <button id="play-btn"><i class="fa fa-play"></i></button>
+        <button id="pause-btn"><i class="fa fa-pause"></i></button>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+      </div>
+    </div>
+    <p id='filename' style="color: #fff">{{ filename }}</p>
+    <script src="../static/assets/pdf.js"></script>
+    <script src="../static/assets/audio.js"></script>
+    <script src="../static/assets/script.js"></script>
+  </body>
+</html>

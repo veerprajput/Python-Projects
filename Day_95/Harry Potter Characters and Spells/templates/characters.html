@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Harry Potter</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+		<link rel="stylesheet" href="static/styles.css"/>
+	</head>
+	<body style='text-align: center; background-color: #ABCBCD'>
+        <h1 style="font-size: 50px; color:#3c7c4b">Harry Potter Cast:</h1>
+        <table>
+            <thead>
+                <th><h1 class='char-h3-nm1'>Name:</h1></th>
+                <th><h1 class='char-h3-nm2'>House:</h1></th>
+            </thead>
+                {% for char in cast %}
+                    <tr class="spell-list">
+                        <td class='char'>{{char['name']}}</td>
+                        <td class='char-house'>{{char['house']}}</td>
+                    <tr>
+                {% endfor %}
+        </table>
+	</body>
+</html>

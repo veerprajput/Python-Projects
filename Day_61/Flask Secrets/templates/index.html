@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+	{% extends 'base.html' %}
+	<head>
+		<>{% block title %}Main Page{% endblock %}</title>
+	</head>
+	<body>
+		{% block content %}
+		<div class="jumbotron">
+			<div class="container">	
+				<h1>Welcome</h1>
+				<p>Are you ready to discover my secret?</p>
+				<button class="btn btn-primary btn-lg"><a href='{{ url_for("login") }}'><strong style='color: white'>Login</strong></a></button>
+			</div>
+		</div>
+		{% endblock %}
+	</body>
+</html>

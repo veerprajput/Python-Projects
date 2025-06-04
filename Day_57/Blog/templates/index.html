@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="top">
+        <div class="title"><h1>My Blog</h1></div>
+    </div>
+    <div class="content">
+        <div class="card">
+            <h2>{{ title1 }}</h2>
+            <p class="text">{{ subtitle1 }}</p>
+            <a href="{{ url_for('post_1') }}">Read</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="card">
+            <h2>{{ title2 }}</h2>
+            <p class="text">{{ subtitle2 }}</p>
+            <a href="{{ url_for('post_2') }}">Read</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="card">
+            <h2>{{ title3 }}</h2>
+            <p class="text">{{ subtitle3 }}</p>
+            <a href="{{ url_for('post_3') }}">Read</a>
+        </div>
+    </div>
+</div>
+</body>
+<footer>
+    <p>Made in USA.</p>
+</footer>
+</html>

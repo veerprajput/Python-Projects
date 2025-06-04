@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PDF Audiobook Reader</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+    <script src="https://kit.fontawesome.com/e30921833d.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>PDF Audiobook Reader</h1>
+      <form action="/pdf" method='post' enctype="multipart/form-data">
+        <label for="myentry">What page do you want to start on?: </label>
+        <input type='entry' name='startPage' autocomplete="off" required>
+        <br>
+        <label for="myfile">Select a file: </label>
+        <input type="file" name='file' autocomplete="off" required>
+        <button type="submit">Upload</button>
+      </form>
+  </body>
+</html>

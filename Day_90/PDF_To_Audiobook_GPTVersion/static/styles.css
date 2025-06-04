@@ -1,0 +1,31 @@
+body {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  h1 {
+    margin-top: 50px;
+  }
+  
+  #pdf-container {
+    margin-top: 50px;
+  }
+  
+  canvas {
+    margin: 20px 0;
+    border: 1px solid black;
+  }
+  
+  #audio-controls {
+    margin-top: 50px;
+  }
+  
+  #volume-slider {
+    margin-left: 10px;
+  }
+  

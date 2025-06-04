@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Extractor</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"/><link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class='text-center'>
+        <h1>Color Extractor Project</h1>
+        <p>In this project you can upload any image from your computer or some photo you found from the web and the top 10 most common colors from that image will pop up along with their hex codes.</p>
+        <br><br><br>
+        {% if src %}
+            {% if src != ''%}
+                <img src="{{ url_for('static', filename = '/images/' + src) }}" width='400px' height='400px'></img>
+            {% endif %}
+        {% endif %}
+        {% if href %}
+            {% if href != ''%}
+                <img src="{{ href }}" width='400px' height='400px'></img>
+            {% endif %}
+        {% endif %}
+        <br><br>
+        <form action="/" method='post' enctype="multipart/form-data">
+            <label for="myfile">Select a file: </label>
+            <input type="file" name='file' autocomplete="off" required>
+            <button type="submit">Upload</button>
+        </form>
+        <br><br>
+        <form action="/" method='post' enctype="multipart/form-data">
+            <label>Or provide a link: </label>
+            <input type='entry' name='file' autocomplete="off">
+            <button type="submit">Upload</button>
+        </form>
+    <br><br><br><br><br><br><br>
+    {% if numOfOccurrences %}
+        <h2 class='lessPadding' style='width: 70%;'>These are top 10 most common colors from the {{ numOfOccurrences }} different colors there are in the image: </h2>
+    {% endif %}
+    {% if rgb_colors %}
+        <div class='row'>
+        <table>
+            <tr>
+                <th class='lessPadding' style='position: relative; left: 12%'>Color:</th>
+                <th style='position: relative; right: 7%'>Hex Code:</th>
+            </tr>
+            {% for i in range(10) %}
+                <tr>
+                    <td style='position: relative; left: 25%'><div class='colorDiv' style='background-color: {{ rgb_colors[i] }};'></div></td>
+                    <td style='position: relative; right: 7%'>{{ rgb_colors[i] }}<td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>

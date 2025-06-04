@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+	{% extends 'base.html' %}
+	<head>
+		<title>{% block title %}Login{% endblock %}</title>
+	</head>
+	<body>
+	{% block content %}
+		<div class="container">
+		<h1>Login</h1>
+		<p>The password field requires 1 special character, 1 digit, 1 uppercase letter, 1 lower case letter, and needs to have at least 8 characters.</p>
+		<form
+			method="POST"
+			enctype="multipart/form-data"
+			action='{{ url_for("login") }}'
+			novalidate
+		>
+		<br/>
+			<p>
+			{{ form.username.label }} {{ form.username(placeholder='Email') }}<br/>
+			{% for err in form.username.errors %}
+			<span style="color: red">{{err}}</span>
+			{% endfor %}
+			</p>
+			<br/>
+			<p>
+			{{ form.password.label }} {{ form.password(placeholder='Password')
+			}}<br />
+			{% for err in form.password.errors %}
+			<span style="color: red">{{err}}</span>
+			{% endfor %}
+			</p>
+			{{ form.submit }}
+		</form>
+		</div>
+	{% endblock %}
+	</body>
+</html>

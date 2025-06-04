@@ -1,0 +1,13 @@
+body {
+    background-color: lightskyblue;
+}
+h1 {
+    color:#ff1e00
+}
+h2 {
+    color:#ff1e00
+}
+hr {
+        color: 'red'
+    border-style solid
+}

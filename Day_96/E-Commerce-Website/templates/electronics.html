@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopZinga</title>
+    <link rel='icon' href='../static/images/favicon.ico'>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div style='height: 85px; background-color: #46c1ff; width: 120%; position: relative; right: 1%; bottom: 1%; margin-right: 3%;'>
+        <img src='../static/images/Shopzinga.png' style='width: 3%; height: 30px; position: relative; top: 15px; left: 15px; display: inline'></img><strong><a href="http://127.0.0.1:5000" style='font-size: 2rem; position: relative; top: 10px; left: 25px; color: #f5f5f5; text-decoration: none'>ShopZinga<a></strong>
+        <img src='../static/images/shopping-cart_1f6d2.png' style='width: 2%; height: 30px; position: absolute; top: 15px; right: 22%;'></img><strong><a href="{{url_for('cart')}}"  style='color: #f5f5f5; position: absolute; top: 21%; right: 16.5%; font-size: 1.5rem; text-decoration: none'>Cart ({{n}})</a></strong>
+    </div>
+    <div id='items-title-section' style='position: relative; right: 0.5%; bottom: 0.5%;'>
+        <h1 class='title-header'>{{topic[0]}}</h1>
+        <p class='title-describer'>These are all of ShopZinga's {{ topic[1] }}</p>
+    </div>
+    {% for number in range(2)%}
+        <div style='display: flex; position: relative; left: 2.5%; margin-top: 1%;'>
+            {% for item in electronics[number]%}
+                <div id='item-section'>
+                    <img class='main-img-on-card' src="{{item['image-url']}}"></img>
+                    {% if topic[0] == 'Electronics' %}
+                        <h1><a href="{{ url_for('item_website', itemname=[item['item-name'], 'electronics'], topic='electronics')}}" style='color:#000'>{{item['item-name']}}<a></h1>
+                    {% endif %}
+                    {% if topic[0] == 'Accessories' %}
+                        <h1><a href="{{ url_for('item_website', itemname=[item['item-name'], 'accessories'], topic='accessories')}}" style='color:#000'>{{item['item-name']}}<a></h1>
+                    {% endif %}
+                    <p style='width: 95%'>{{item['item-description']}}</p>
+                </div>
+                <br>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</body>
+</html>

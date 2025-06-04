@@ -1,0 +1,235 @@
+//-----------------------------------------------------------------------------
+/**
+ * Define GLOBAL function (or value) once. It is for avoid rewrite definition.
+ *
+ * @param key
+ *   name of the global function.
+ * @param val
+ *   definition.
+ * @param callback_success
+ *   the callback function that runs after definition.
+ */
+function DEFINE_GLOBAL_ONCE(key, val, callback_success) {
+	if (typeof(window[key]) != "undefined") return;
+	window[key] = val;
+
+	if (typeof(callback_success) == "function") {
+		callback_success();
+	}
+}
+
+//-----------------------------------------------------------------------------
+/**
+ * convertArray2CSV
+ *
+ * @param arr
+ *   2D array ([[], [], ..]) or 1D array ([..])
+ * @param force_quote
+ *   boolean
+ *   if true, force quote csv cell.
+ *   if false, quote csv cell when it is needed. (default)
+ * @return string
+ */
+ function convertArray2CSV(arr, force_quote = false) {
+	var formatCSV = "";
+	var parseCell = function(val, force_quote) {
+		var innerValue = (val === null) ? '' : val.toString();
+		var result = innerValue.replace(/"/g, '""');
+		if (force_quote || (result.search(/("|,|\n)/g) >= 0)) {
+			result = '"' + result + '"';
+		}
+		return result;
+	}
+
+	for (var i = 0; i < arr.length; i++) {
+		var value = arr[i];
+		var cell = "";
+
+		if (typeof(value) == "object") {
+			// 2D
+			for (var j = 0; j < value.length; j++) {
+				cell = parseCell(value[j], force_quote);
+				formatCSV += (j > 0) ? ',' + cell : cell;
+			}
+			formatCSV += '\n';
+		} else {
+			// 1D
+			cell = parseCell(value, force_quote);
+			formatCSV += (i > 0) ? ',' + cell : cell;
+		}
+	}
+
+	return formatCSV;
+}
+
+//-----------------------------------------------------------------------------
+/**
+ * Set data to clipboard.
+ *
+ * @param elem
+ *   the element which has value to set to clipboard.
+ *   this element must have value attribute.
+ * @return bool
+ *   false: when execCommand is not supported or disabled.
+ */
+function setDataToClipboard(elem) {
+	if (!elem) return;
+
+	var result = false;
+
+	var text_area = document.createElement("input");
+	text_area.type = "text";
+	text_area.value = $(elem).attr("value");
+	elem.appendChild(text_area);
+	text_area.focus();
+
+	text_area.selectionStart = 0;
+	text_area.selectionEnd = text_area.value.length;
+	result = document.execCommand("copy");
+
+	elem.removeChild(text_area);
+	return result;
+}
+
+//-----------------------------------------------------------------------------
+/**
+ * Set text to clipboard.
+ *
+ * @param text
+ *   the text which has value to set to clipboard.
+ * @return bool
+ *   false: when execCommand is not supported or disabled.
+ */
+function setTextToClipboard(text) {
+	if (!text) return;
+
+	var result = false;
+
+	var text_area = document.createElement("input");
+	text_area.type = "text";
+	text_area.value = text;
+	$(text_area).css({
+		"position": "fixed",
+		"top": "0",
+		"opacity": "0",
+	});
+	$("body").append(text_area);
+	text_area.focus();
+
+	text_area.selectionStart = 0;
+	text_area.selectionEnd = text_area.value.length;
+	result = document.execCommand("copy");
+	text_area.remove(text_area);
+
+	return result;
+}
+
+//-----------------------------------------------------------------------------
+/**
+ * zero padding
+ *
+ * @param num
+ *   325
+ * @param len
+ *   4
+ * @return string
+ *   0325
+ */
+function zeroPadding(num, len){
+	return (Array(len).join('0') + num).slice(-len);
+}
+
+//-----------------------------------------------------------------------------
+/**
+ * Set data to clipboard.
+ *
+ * @param elem
+ *   the element which has value to set to clipboard.
+ *   this element must have value attribute.
+ * @return bool
+ *   false: when execCommand is not supported or disabled.
+ */
+function setDataToClipboard(elem) {
+	if (!elem) return;
+
+	var result = false;
+
+	var text_area = document.createElement("input");
+	text_area.type = "text";
+	text_area.value = $(elem).attr("value");
+	elem.appendChild(text_area);
+	text_area.focus();
+
+	text_area.selectionStart = 0;
+	text_area.selectionEnd = text_area.value.length;
+	result = document.execCommand("copy");
+
+	elem.removeChild(text_area);
+	return result;
+}
+
+//-----------------------------------------------------------------------------
+/**
+ * Scroll to Element (centering vertically)
+ *
+ * @param elem
+ *   the element to be centering.
+ * @param duration
+ *   scrolling duration.
+ * @param callback_success
+ *   the callback function that runs after scrolling.
+ */
+function scrollToElement(elem, duration, callback_success) {
+	if (!elem) return;
+	if (isNaN(duration)) {
+		duration = 400;
+	}
+
+	$("html,body").animate({
+		scrollTop: window.pageYOffset + elem.getBoundingClientRect().top - ($(window).height() - elem.getBoundingClientRect().height)/2
+	}, duration, "swing", function() {
+		if (typeof(callback_success) == "function") {
+			callback_success();
+		}
+	});
+}
+
+//-----------------------------------------------------------------------------
+/**
+ * Returns reference string for this page (*.html). remove number postfix (_12345).
+ *
+ * @return reference string
+ */
+function getRef() {
+	var re = window.location.href.match(/([^/]+)\.html/);
+	if (!re || !re[1]) return "";
+
+	return re[1].replace(/_\d+$/, "");
+}
+
+//-----------------------------------------------------------------------------
+/**
+ * Returns url string with param.
+ * if the base href has some params, add another params after it.
+ *
+ * @param href base href
+ * @param param param object {key1: val1, key2: val2, ..}
+ * @param ignore if true, ignore params at the base href
+ * @return url string with param
+ */
+function makeURL(href, param, ignore) {
+	if (ignore) {
+		if (href.indexOf("?") >= 0) {
+			href = href.slice(0, href.indexOf("?"));
+		}
+	}
+	var param_list = [];
+	if (param) {
+		for (var key in param) {
+			param_list.push(key + "=" + param[key]);
+		}
+		href += (href.indexOf("?") < 0) ? "?" : "&";
+	}
+	return href + param_list.join("&");
+}
+

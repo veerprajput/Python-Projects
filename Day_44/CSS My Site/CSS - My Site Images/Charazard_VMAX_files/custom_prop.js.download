@@ -1,0 +1,41 @@
+(function(){
+	const key = "all.custom_prop";
+
+	var getCustomProp = function(label) {
+		if (!localStorage) return;
+
+		var props_list_str = localStorage.getItem(key);
+		var props_list_json = {};
+		try {
+			props_list_json = JSON.parse(props_list_str);
+		} catch (e) {
+			return;
+		}
+
+		if (!props_list_json) return;
+
+		return props_list_json[label];
+	};
+
+	var setCustomProp = function(label, props) {
+		if (!localStorage) return;
+
+		var props_list_str = localStorage.getItem(key);
+		var props_list_json = {};
+		try {
+			props_list_json = JSON.parse(props_list_str);
+		} catch (e) {
+			return;
+		}
+
+		if (!props_list_json) {
+			props_list_json = {};
+		}
+
+		props_list_json[label] = props;
+		localStorage.setItem(key, JSON.stringify(props_list_json));
+	};
+
+	window.getCustomProp = getCustomProp;
+	window.setCustomProp = setCustomProp;
+})();

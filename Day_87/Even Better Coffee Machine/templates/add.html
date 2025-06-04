@@ -1,0 +1,68 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}Add A New Cafe{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="static/css/styles.css">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+
+      <h1>Add a new cafe into the database</h1>
+
+      <!-- This is where your WTForm will go -->
+      <form method="POST" enctype="multipart/form-data" action='{{ url_for("add_cafe") }}' novalidate>
+        <p>
+        {{ form.cafe.label }}<br> {{ form.cafe(style='color: black') }}<br/>
+        </p>
+        <br/>
+        <p>
+        {{ form.cafe_location.label }}<br> {{ form.cafe_location(style='color: black') }}<br/>
+        </p>
+        <br/>
+        <p>
+          {{ form.cafe_img.label }}<br> {{ form.cafe_img(style='color: black') }}<br/>
+        </p>
+        <br/>
+        <p>
+          {{ form.location.label }}<br> {{ form.location(style='color: black') }}<br/>
+        </p>
+        <br/>
+        <p>
+          {{ form.seats.label }}<br> {{ form.seats(style='color: black') }}<br/>
+        </p>
+        <br/>
+        <p>
+        {{ form.has_toilet.label }}<br> {{ form.has_toilet(style='color: black') }}<br/>
+        </p>
+        <br/>
+        <p>
+        {{ form.has_wifi.label }}<br> {{ form.has_wifi(style='color: black') }}<br/>
+        </p>
+        <br/>
+        <p>
+        {{ form.has_sockets.label }}<br> {{ form.has_sockets(style='color: black') }}<br/>
+        </p>
+        <br/>
+        <p>
+          {{ form.can_take_calls.label }}<br> {{ form.can_take_calls(style='color: black') }}<br/>
+        </p>
+        <br/>
+        <p>
+          {{ form.coffee_price.label }}<br> {{ form.coffee_price(style='color: black') }}<br/>
+        </p>
+        <br/>
+        <p>
+        {{ form.submit(style='color: black') }}
+        </p>
+        <br/>
+      
+      </form>
+
+	  <p class="space-above"><a href="{{ url_for('cafes') }}">See all cafes</a></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

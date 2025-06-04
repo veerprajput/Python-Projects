@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap");
+
+/* Main section */
+
+
+.main-div {
+    height: 500px;
+    background-image: url("background.gif");
+    backdrop-filter: blur(500px);
+    text-align: left;
+    margin: 0;
+}
+
+.main-heading {
+    position: relative;
+    top: 40px;
+    left: 50px;
+    font-size: 4rem;
+    color: #0096FF;
+    width: 70%;
+    font-family: 'Arial Narrow Bold', sans-serif;
+}
+
+.second-heading {
+    position: relative;
+    top: 5px;
+    left: 50px;
+    font-size: 2rem;
+    color: #2bd3c0;
+    width: 70%;
+}
+
+.heading-links {
+    color: #2bd3c0;
+}
+
+/* Second Section */
+
+.second-div {
+    text-align: center;
+    height: 700px;
+    background-image: url("static/about_background.gif");
+    width: 100%;
+    font-family: 'Arial Narrow Bold', sans-serif;
+}
+
+.third-heading {
+    position: relative;
+    top: 30px;
+    left: 250px;
+    font-size: 3rem;
+    width: 70%;
+    margin-bottom: 100px;
+    color: #ff4a4a;
+}
+
+.small-text {
+    font-size: 1rem;
+    position: relative;
+    bottom: 20px;
+    color: #0096FF;
+}
+
+.about-me-heading {
+    font-family: 'Arial Narrow Bold', serif;
+    color: #0096FF;
+}
+
+.about-me-div {
+    position: relative;
+    left: 900px;
+    font-family: serif;
+    height: 400px;
+    font-size: 1.2rem;
+    bottom: 50px
+}
+
+.tut {
+    filter: grayscale(100%);
+}
+
+.tut:hover {
+    filter: none;
+}
+
+/* Third Section */
+.skills-div {
+    background-color: #FF6C6C;
+    width: 100%;
+    height: 500px;
+    position: relative;
+    right: 900px;
+    text-align: center;
+}
+
+span {
+    color: #0096FF;
+}
+
+.fourth-heading {
+    position: relative;
+    right: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.about .row .content .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-family: "Nunito";
+    font-weight: 600;
+  }
+  .about .row .content .box-container .box p {
+    text-transform: none;
+  }
+  .about .row .content .box-container .box p span {
+    color: #011aff;
+  }
+
+  .work .box-container .box img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .work .box-container .box .content {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 85%;
+    left: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+  }
+  .work .box-container .box .content .tag {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.5rem;
+    width: 100%;
+    padding-left: 1rem;
+    background: #ffd900;
+  }
+  .work .box-container .box .content .tag h3 {
+    font-size: 2rem;
+  }
+  .work .box-container .box:hover .content {
+    top: 25%;
+  }
+  .education .box-container .box:hover {
+    transform: scale(1.03);
+    box-shadow: 1rem 0.5rem 1.2rem rgba(0, 0, 0, 0.3);
+  }
+  .education .box-container .box .image {
+    flex: 1 1 20rem;
+    width: 100%;
+  }
+  .education .box-container .box img {
+    object-fit: cover;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .education .box-container .box .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    flex-wrap: wrap;
+    flex: 1 1 70rem;
+  }
+  .education .box-container .box .content h3 {
+    font-size: 2.5rem;
+    color: #012970;
+    padding: 0.5rem 0;
+    font-weight: 600;
+    text-align: left;
+    margin-left: 1rem;
+  }
+  .education .box-container .box .content p {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    text-align: left;
+  }
+  .education h4 {
+    font-size: 2rem;
+    color: rgb(34, 109, 0);
+    text-align: left;
+    margin: 1rem;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+}
+
+/* education media queries starts*/
+
+/* .socials {
+    position: relative;
+    margin-top: 9rem;
+  }
+
+.socials .social-icons {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
+  .socials .social-icons li {
+    display: inline;
+    margin-bottom: 14px;
+  }
+  .social-icons a{
+    font-size: 2rem;
+    display: inline-block;
+    line-height: 44px;
+    color: #00d9ff;
+    background-color: #000000;
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    margin-right: 8px;
+    border-radius: 100%;
+}
+
+.social-icons a:hover {
+  color: #fff;
+  background-color: #0685da;
+}
+.social-icons a.github:hover {
+  background-color: #0e0e0e;
+}
+.social-icons a.twitter:hover {
+  background-color: #00aced;
+}
+.social-icons a.linkedin:hover {
+  background-color: #007bb6;
+}
+.social-icons a.dev:hover {
+  background-color: #070707;
+}
+.social-icons a.instagram:hover {
+  background-color: #ee00da;
+} */
+
